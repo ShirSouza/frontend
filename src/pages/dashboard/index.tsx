@@ -12,11 +12,8 @@ import { ModalOrder } from '../../components/ModalOrder'
 
 import Modal from 'react-modal';
 
-type OrderProps = {class name {
-  constructor(parameters) {
-    
-  }
-}
+
+type OrderProps = {
   id: string;
   table: string | number;
   status: boolean;
@@ -105,7 +102,6 @@ export default function Dashboard({ orders }: HomeProps){
       <title>Painel - Sujeito Pizzaria</title>
     </Head>
     <div>
-      <Header/>
     
       <main className={styles.container}>
 
