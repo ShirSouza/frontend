@@ -5,8 +5,13 @@ import { api } from '../services/apiClient';
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import Router from 'next/router';
 
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
+type UserProps = {
+  id: string;
+  name: string;
+  email: string;
+};
 
 type AuthContextData = {
   user: UserProps;
@@ -14,28 +19,22 @@ type AuthContextData = {
   signIn: (credentials: SignInProps) => Promise<void>;
   signOut: () => void;
   signUp: (credentials: SignUpProps) => Promise<void>;
-}
-
-type UserProps = {
-  id: string;
-  name: string;
-  email: string;
-}
+};
 
 type SignInProps = {
   email: string;
   password: string;
-}
+};
 
 type SignUpProps = {
   name: string;
   email: string;
   password: string;
-}
+};
 
 type AuthProviderProps = {
   children: ReactNode;
-}
+};
 
 export const AuthContext = createContext({} as AuthContextData)
 
@@ -50,8 +49,11 @@ export function signOut(){
 }
 
 export function AuthProvider({ children }: AuthProviderProps){
-  const [user, setUser] = useState<UserProps>()
+  const [user, setUser] = useState<UserProps>();
+
   const isAuthenticated = !!user;
+
+  
 
   useEffect(() => {
 
@@ -136,7 +138,7 @@ export function AuthProvider({ children }: AuthProviderProps){
   
 
   return(
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut, signUp }}>
+    <AuthContext.Provider value={{ user , isAuthenticated, signIn, signOut, signUp }}>
       {children}
     </AuthContext.Provider>
   )
